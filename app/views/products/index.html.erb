@@ -1,0 +1,39 @@
+<h1>Listing products</h1>
+<div class="container">
+<form action=<%= search_products_path%> method="get">
+     <input name="key_search" class="form-control"></input>
+     <p class = "text-center"> <button type="submit" class="btn btn-info dropdown-toggle">Search
+     </button>
+     </p>
+</form>     
+ <div class="table-bordered">     
+   <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.image %></td>
+        <td><%= link_to 'Show', product,:class => 'btn btn-warning' %></td>
+        <td><%= link_to 'Edit', edit_product_path(product),:class => 'btn btn-info' %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+<br>
+
+<%= link_to 'New Product', new_product_path,:class => 'btn btn-default' %>

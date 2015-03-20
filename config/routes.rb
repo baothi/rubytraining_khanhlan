@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
-  get 'homes/index'
 
   root 'homes#index'
+  
+  get 'homes/index'
+
+  resources :products do
+    member do
+      get "test_member"
+    end
+    collection do 
+      get "test_collection"
+      get "search"
+    end
+  end
+
+  
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,16 +35,16 @@ Rails.application.routes.draw do
 
   # Example resource route with options:
   #   resources :products do
-  #     member do
+  #     member do (phai co id cua 1 products)
   #       get 'short'
   #       post 'toggle'
   #     end
   #
-  #     collection do
+  #     collection do (khong can)
   #       get 'sold'
+  #       put 'search'
   #     end
   #   end
-
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

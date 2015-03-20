@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div>
+	<%= link_to 'Products',products_path,:class => 'btn btn-info'%>
+	<%= link_to 'Home', root_path,:class => 'btn btn-info'%>
+</div>
 <%= yield %>
-
 </body>
 </html>
