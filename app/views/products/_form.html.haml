@@ -1,0 +1,36 @@
+= form_for (@product), :html => {:multipart => true, :class => "form-horizontal product" } do |f|
+  - if @product.errors.any?
+    #error_expl.panel.panel-danger
+      .panel-heading
+        %h3.panel-title
+          = pluralize(@product.errors.count, "error")
+          prohibited this product from being saved:
+      .panel-body
+        %ul
+          - @product.errors.full_messages.each do |msg|
+            %li= msg
+  .form-group
+    = f.label :name, :class => 'control-label col-lg-2'
+    .col-lg-5
+      = f.text_field :name, :class => 'form-control'
+  .form-group
+    = f.label :image, :class => 'control-label col-lg-2'
+    .col-lg-5
+      = f.file_field :image
+  .form-group
+    = f.label :description, :class => 'control-label col-lg-2'
+    .col-lg-5
+      = f.text_area :description,:rows => 3, :class => 'form-control'
+  .form-group
+    = f.label :category_id, :class => 'control-label col-lg-2'
+    .col-lg-3
+      = select(:product, :category_id, options_from_collection_for_select(@categories, :id, :name)) 
+  .form-group
+    = f.label :price, :class => 'control-label col-lg-2'
+    .col-lg-3
+      = f.text_field :price, :class => 'form-control'
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil, :class => 'btn btn-primary'
+
+                     

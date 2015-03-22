@@ -1,0 +1,18 @@
+= form_for (@category) do |f|
+  - if @category.errors.any?
+    #error_expl.panel.panel-danger
+      .panel-heading
+        %h3.panel-title
+          = pluralize(@category.errors.count, "error")
+          prohibited this category from being saved:
+      .panel-body
+        %ul
+          - @category.errors.full_messages.each do |msg|
+            %li= msg
+  .form-group
+    = f.label :name, :class => 'control-label col-lg-2'
+    .col-lg-5
+      = f.text_field :name, :class => 'form-control'
+      = f.submit nil, :class => 'btn btn-primary'
+            
+                     

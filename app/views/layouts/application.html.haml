@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Rubytraining
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %div
+      = link_to 'Categories',categories_path,:class => 'btn btn-info'
+      = link_to 'Products',products_path,:class => 'btn btn-info'
+      = link_to 'Home', root_path,:class => 'btn btn-info'
+    = yield
+
+

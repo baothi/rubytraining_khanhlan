@@ -1,0 +1,29 @@
+%h1 Listing products
+.container
+  %form{:action => "<haml_loud"}
+    search_products_path method="get">
+    %input.form-control{:name => "key_search"}/
+    %p.text-center
+      %button.btn.btn-info.dropdown-toggle{:type => "submit"}
+        Search
+  .table-bordered
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Price
+          %th Image
+          %th{:colspan => "3"}
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.name
+            %td= product.description
+            %td= product.price
+            %td= product.image
+            %td= link_to 'Show', product,:class => 'btn btn-warning'
+            %td= link_to 'Edit', edit_product_path(product),:class => 'btn btn-info'
+            %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger'
+%br/
+= link_to 'New Product', new_product_path,:class => 'btn btn-default'

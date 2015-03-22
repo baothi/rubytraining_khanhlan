@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
+  resources :categories
+
   root 'homes#index'
   
   get 'homes/index'
