@@ -1,3 +1,46 @@
+<script language="javascript">
+function kiem_tra(){
+   if($('#ho_ten').val()=='')
+   {
+      alert('Vui lòng nhập họ tên')
+    $('#ho_ten').focus()
+    return false
+   }
+   
+   if($('#email').val()=='')
+   {
+      alert('Vui lòng nhập email')
+    $('#email').focus()
+    return false
+   }
+   
+   if($('#tieu_de').val()=='')
+   {
+      alert('Vui lòng nhập tiêu đề')
+    $('#tieu_de').focus()
+    return false
+   }
+   
+   if($('#noi_dung').val()=='')
+   {
+      alert('Vui lòng nhập nội dung')
+    $('#noi_dung').focus()
+    return false
+   } 
+}
+
+function kt_email(e){
+              
+      //alert('aa');
+      var  dinh_dang = $('#email').val()
+      if(dinh_dang.indexOf("@")==-1)
+      { 
+          alert('Email không đúng định dạng');
+          return false;
+      }
+ }
+              
+</script>
 <%= form_for @product, :url => products_path, :html => {:multipart => true, :class => "form-horizontal product" } do |f| %>
 
   <% if @product.errors.any? %>
@@ -42,7 +85,7 @@
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, :class => 'btn btn-primary', :onclick= "kiem_tra()" %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 products_path, :class => 'btn btn-default' %>
     </div>

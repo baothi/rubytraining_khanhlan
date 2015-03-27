@@ -28,13 +28,15 @@ ActiveRecord::Schema.define(version: 20150321095332) do
   end
 
   create_table "products", force: true do |t|
+    t.integer  "category_id"
     t.string   "name"
     t.text     "description"
     t.float    "price"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
 end

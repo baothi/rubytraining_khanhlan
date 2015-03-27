@@ -7,9 +7,10 @@
 %p
   %strong Price:
   = @product.price
-%form{:action => new_comment_path, :method =>"get"}
-  %textarea{:name => "content"}
+%form{:action => comments_path, :method =>"post"}
+  %textarea{:name => "comment[content]"}
   %p
+  %input{:name=>"comment[product_id]", :type=>"hidden",:value => @product.id}
     %button.btn.btn-info.dropdown-toggle{:type => "submit"} Submit
 = link_to 'Edit', edit_product_path(@product)
 = link_to 'Back', products_path
