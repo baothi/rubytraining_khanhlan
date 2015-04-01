@@ -1,0 +1,16 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+	.container
+		.col-md-3.header_top=image_tag "logo.png"
+		.col-md-5.header_top
+			%form{:action => search_products_path, :method =>"get", :role => "form"}
+				.input-group
+					%input.form-control.txtSearch{:name => "key_search", :placeholder => "Product name", :type => "text"}
+						%span.input-group-btn
+							%input.btn.btn-info{:type => "submit", :value => "Search"}
+		#navbar.navbar-collapse.collapse.col-md-4
+			%ul.nav.navbar-nav.navbar-right
+				%li.active
+					%a sign out
+				%li
+					%a Sign up
+				
